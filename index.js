@@ -1,4 +1,5 @@
 const sequelize = require("./db/index.js");
+const SimplePokemon = require("./db/models/simple-pokemon.model.js");
 
 try {
   sequelize.authenticate();
