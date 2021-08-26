@@ -18,6 +18,10 @@ module.exports = (sequelize, DataTypes) => {
     {
       name: {
         type: DataTypes.STRING,
+        // unique:true,
+        validate: {
+          notEmpty: true, // sequelize validation only, don't allow empty strings
+        },
       },
       japaneseName: {
         type: DataTypes.STRING,
@@ -40,7 +44,15 @@ module.exports = (sequelize, DataTypes) => {
     },
     {
       sequelize,
-      modelName: "SimplePokemon",
+      // modelName: "SimplePokemon",
+      tableName: "Simple_Pokemon",
+      indexes: [
+        {
+          unique: true,
+          fields: ["name"],
+        },
+      ],
+      underscored: true,
     }
   );
   return SimplePokemon;

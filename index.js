@@ -13,4 +13,9 @@ db.sequelize.sync({ force: true });
 
 // [4] Set timeout to simulate async calls to play with model --> ADDED THIS SECTION
 // We need to hold a while for db sync
-setTimeout(createPikachu, 500);
+setTimeout(createPikachu, 300);
+
+const Read = require("./crud/read");
+
+setTimeout(() => Read.findPokemonsWithBaseHPGreaterThan(34), 500);
+setTimeout(() => Read.findPokemonWithNameOrBaseHP("Pikachu", 59), 500);
