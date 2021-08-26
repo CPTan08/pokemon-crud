@@ -19,7 +19,7 @@ describe("create", () => {
   });
 
   afterAll(async () => {
-    // await PokemonModel.truncate();
+    await PokemonModel.truncate();
     await db.sequelize.close();
   });
 
@@ -48,7 +48,7 @@ describe("create", () => {
     // assert
   });
 
-  it("should not create pokemon with empty name", async () => {
+  it.skip("should not create pokemon with empty name", async () => {
     // run
     const created = await createPokemon({
       ...pokemon1,
@@ -58,7 +58,7 @@ describe("create", () => {
     // assertion
   });
 
-  it("should not create pokemon with duplicated name", async () => {
+  it.skip("should not create pokemon with duplicated name", async () => {
     // set up
     await createPokemon(pokemon1);
 
