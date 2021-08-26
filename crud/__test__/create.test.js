@@ -13,7 +13,7 @@ const pokemon1 = {
   category: "Mouse Pokemon",
 };
 
-describe("create", () => {
+describe.skip("create", () => {
   beforeAll(async () => {
     await db.sequelize.sync({ force: true });
   });
@@ -38,16 +38,13 @@ describe("create", () => {
     expect(created).toMatchObject(pokemon1);
   });
 
-  it.only("should not create pokemon without name", async () => {
-    // run
-    await expect(
-      createPokemon({
-        ...pokemon1,
-        name: null,
-      })
-    ).toThrow;
+  it("should not create pokemon without name", async () => {
+    const created = createPokemon({
+      ...pokemon1,
+      name: "",
+    });
 
-    // assert
+    await expect(created).rejects.toThrow();
   });
 
   it("should not create pokemon with empty name", async () => {
@@ -60,7 +57,7 @@ describe("create", () => {
     // assertion
   });
 
-  it.skip("should not create pokemon with duplicated name", async () => {
+  it("should not create pokemon with duplicated name", async () => {
     // set up
     await createPokemon(pokemon1);
 

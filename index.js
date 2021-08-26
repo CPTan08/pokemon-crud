@@ -19,3 +19,6 @@ const Read = require("./crud/read");
 
 setTimeout(() => Read.findPokemonsWithBaseHPGreaterThan(34), 500);
 setTimeout(() => Read.findPokemonWithNameOrBaseHP("Pikachu", 59), 500);
+
+const Update = require("./crud/update");
+setTimeout(() => Update.updatePokemonHPByCategory(100, "Turtle"), 500);

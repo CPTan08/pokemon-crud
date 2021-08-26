@@ -1,18 +1,13 @@
 const db = require("../db/models/index.js");
-
 const { Op } = require("sequelize");
 
-const deletePikachu = async (id) => {
-  await db.SimplePokemon.destroy({
+const deletePokemon = async (id) => {
+  const numberOfDeletedRecord = await db.SimplePokemon.destroy({
     where: {
-      id: 1,
+      id: id,
     },
   });
+  return numberOfDeletedRecord;
 };
 
-// Truncate the table
-// await db.SimplePokemon.destroy({
-//   truncate: true,
-// });
-
-module.exports = deletePikachu;
+module.exports = { deletePokemon };
