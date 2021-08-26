@@ -1,5 +1,6 @@
 const express = require("express");
 const createPokemon = require("../crud/create.js");
+const { deletePokemon } = require("../crud/delete.js");
 const updatePokemonHPByCategory = require("../crud/update.js");
 
 const router = express.Router();
@@ -25,6 +26,19 @@ router.put("/:category/:hp", async (req, res, next) => {
   try {
     const result = await updatePokemonHPByCategory(hp, category);
     res.status(200).send(result);
+  } catch (error) {
+    console.log(error);
+    next(error);
+  }
+});
+
+router.delete("/:id", async (req, res, next) => {
+  const id = parseInt(req.params.id);
+  console.log("found id", id);
+
+  try {
+    const result = await deletePokemon(id);
+    res.status(200).send(`${result} pokemon is deleted`);
   } catch (error) {
     console.log(error);
     next(error);
