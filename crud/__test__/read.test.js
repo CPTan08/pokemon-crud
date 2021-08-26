@@ -20,7 +20,6 @@ const pikachu = {
   category: "Mouse Pokemon",
 };
 const pokemons = [
-  pikachu,
   {
     name: "Squirtle",
     japaneseName: "ゼニガメ",
