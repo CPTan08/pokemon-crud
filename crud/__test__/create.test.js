@@ -38,17 +38,19 @@ describe("create", () => {
     expect(created).toMatchObject(pokemon1);
   });
 
-  it("should not create pokemon without name", async () => {
+  it.only("should not create pokemon without name", async () => {
     // run
-    const created = await createPokemon({
-      ...pokemon1,
-      name: null,
-    });
+    await expect(
+      createPokemon({
+        ...pokemon1,
+        name: null,
+      })
+    ).toThrow;
 
     // assert
   });
 
-  it.skip("should not create pokemon with empty name", async () => {
+  it("should not create pokemon with empty name", async () => {
     // run
     const created = await createPokemon({
       ...pokemon1,
