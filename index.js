@@ -1,9 +1,10 @@
-const sequelize = require("./db/index.js");
-const SimplePokemon = require("./db/models/simple-pokemon.model.js");
+// index.js
+const db = require("./db/models/index.js"); // --> REPLACE THIS
 
-try {
-  sequelize.authenticate();
-  console.log("Connection has been established successfully.");
-} catch (error) {
-  console.error("Unable to connect to the database:", error);
-}
+// [1] Just test connection, we don't neeed this in actual. --> REMOVE THIS SECTION
+// [2] For dev exploration convenience, we forced synchronisation.
+db.sequelize.sync({ force: true }); // --> REPLACE THIS
+// db.sequelize.sync(); // --> REPLACE THIS
+
+// [3] Use this syntax to refer to the model in the app/router code later --> ADDED THIS SECTION
+// const SimplePokemon = await db.SimplePokemon.create();
