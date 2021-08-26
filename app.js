@@ -6,7 +6,7 @@ app.use(express.json());
 
 //initialize DB connection
 const db = require("./db/models/index.js");
-db.sequelize.sync({ force: true });
+db.sequelize.sync();
 
 app.get("/", (req, res) => {
   res.send("Hello World!");

@@ -2,7 +2,7 @@ const db = require("../db/models/index.js");
 const { Op } = require("sequelize");
 
 const updatePokemonHPByCategory = async (hp, category) => {
-  const numberOfAffectedRecords = await SimplePokemon.update(
+  const numberOfAffectedRecords = await db.SimplePokemon.update(
     { baseHP: hp },
     {
       where: {
